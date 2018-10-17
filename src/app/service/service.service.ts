@@ -10,7 +10,8 @@ export class ServiceService {
   contactosRef: AngularFireList<any[]>;
   contactos: Observable<any[]>;
   reviewRef: AngularFireList<any[]>;
-  reviews: Observable<any[]>;
+
+  // reviews: Observable<any[]>;
 
 
   constructor(db: AngularFireDatabase) {
@@ -29,9 +30,9 @@ export class ServiceService {
     return this.contactos;
   }
 
-  updateContacto(key, contacto) {
-    this.contactosRef.update(key, contacto);
-  }
+  // updateContacto(key, contacto) {
+  //   this.contactosRef.update(key, contacto);
+  // }
 
   addContacto(contacto) {
     this.contactosRef.push(contacto);
@@ -41,17 +42,17 @@ export class ServiceService {
     this.contactosRef.remove(key);
   }
 
-// reviews
-  getReviews() {
-    this.reviews = this.reviewRef.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
-      )
-    );
-    return this.reviews;
-  }
-
-  addReview(review) {
-    this.reviewRef.push(review);
-  }
+// // reviews
+//   getReviews() {
+//     this.reviews = this.reviewRef.snapshotChanges().pipe(
+//       map(changes =>
+//         changes.map(c => ({key: c.payload.key, ...c.payload.val()}))
+//       )
+//     );
+//     return this.reviews;
+//   }
+//
+//   addReview(review) {
+//     this.reviewRef.push(review);
+//   }
 }
